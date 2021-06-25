@@ -1,0 +1,10 @@
+export const API_HOST = 'http://localhost:3000';
+// export const API_GET_DATA = `${API_HOST}/posts/1`
+// export const API_GET_DATA = `https://my-json-server.typicode.com/jyydev/json/posts/1`;
+// export const API_GET_DATA = `https://raw.githubusercontent.com/jyydev/json/main/db2.json`;
+// export const API_GET_DATA = `https://my-json-server.typicode.com/MigueldeIcaza1/mockjson/db`;
+// export const API_GET_DATA = `https://api.jsonbin.io/b/60d55fb38ea8ec25bd1528cd`;
+// export const API_GET_DATA = `https://jsonbin.org/jyydev/public/react-crash-course/posts/0`;
+export const GITHUB_PUT_DATA = `/repos/jyydev/jsondb/contents/vercel/react-github.json`;
+export const GITHUB_GET_DATA = `https://api.github.com/repos/jyydev/jsondb/contents/vercel/react-github.json`;
+export const GITHUB_GET_DATA_CACHE = `https://raw.githubusercontent.com/jyydev/jsondb/main/vercel/react-github.json`;
