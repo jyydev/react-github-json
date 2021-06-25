@@ -15,10 +15,22 @@ const octokit = new Octokit({
 });
 
 async function fetchData(setData) {
-  const response = await octokit.request(`GET ${GITHUB_GET_DATA_CACHE}`);
-  const data = response.data;
-  console.log(data);
+  // api version (maybe 50 limit per minute)
+  const res = await fetch(GITHUB_GET_DATA, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  const sc = await res.json();
+  const data = JSON.parse(decode(sc.content));
   setData(data);
+ 
+  // // NOT WORKING
+  // const response = await octokit.request(`GET ${GITHUB_GET_DATA_CACHE}`);
+  // const data = response.data;
+  // console.log(data);
+  // setData(data);
 
   // // cache version (alternative, not working for localhost:3000)
   // const res = await fetch(GITHUB_GET_DATA_CACHE, {
@@ -29,17 +41,6 @@ async function fetchData(setData) {
   // });
   // const data = await res.json();
   // console.log(data);
-  // setData(data);
-
-  // // api version (maybe 50 limit per minute)
-  // const res = await fetch(GITHUB_GET_DATA, {
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-type': 'application/json',
-  //   },
-  // });
-  // const sc = await res.json();
-  // const data = JSON.parse(decode(sc.content));
   // setData(data);
 }
 
