@@ -15,37 +15,36 @@ const octokit = new Octokit({
 });
 
 async function fetchData(setData) {
-  // api version (maybe 50 limit per minute)
-  const res = await fetch(GITHUB_GET_DATA, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
-  const sc = await res.json();
-  const data = JSON.parse(decode(sc.content));
-  setData(data);
- 
-  // // NOT WORKING
-  // const response = await octokit.request(`GET ${GITHUB_GET_DATA_CACHE}`);
-  // const data = response.data;
-  // console.log(data);
-  // setData(data);
-
-  // // cache version (alternative, not working for localhost:3000)
-  // const res = await fetch(GITHUB_GET_DATA_CACHE, {
+  // // api version (60 limit per hour)
+  // const res = await fetch(GITHUB_GET_DATA, {
   //   method: 'GET',
   //   headers: {
   //     'Content-type': 'application/json',
   //   },
   // });
-  // const data = await res.json();
-  // console.log(data);
+  // const sc = await res.json();
+  // const data = JSON.parse(decode(sc.content));
   // setData(data);
+
+  const res = await fetch(GITHUB_GET_DATA_CACHE);
+  const data = await res.json();
+  setData(data);
 }
 
 async function fetchSetData(data) {
+  // // only work for 1st input, sha changes and doesn't update fast enough
+  // const reponse = await fetch(GITHUB_GET_DATA, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-type': 'application/json',
+  //   },
+  // });
+  // const res = await reponse.json();
+  // const sha = res.sha;
+
+  // uses api key
   const response = await octokit.request(`GET ${GITHUB_PUT_DATA}`);
+  console.log(response);
   const sha = response.data.sha;
 
   const rs = await octokit.request(`PUT ${GITHUB_PUT_DATA}`, {
