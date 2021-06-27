@@ -47,6 +47,7 @@ async function fetchSetData(data) {
   console.log(response);
   const sha = response.data.sha;
 
+  console.log(data);
   const rs = await octokit.request(`PUT ${GITHUB_PUT_DATA}`, {
     // headers: {
     //   Authorization: `token ${process.env.REACT_APP_GITHUB_KEY}`,
