@@ -6,4 +6,4 @@
 # Live examples
 - Vercel: https://react-github-json.vercel.app/
 - Netlify: https://react-github-json.netlify.app/
-> Serve live from this github repo
+> Served live from this github repo
