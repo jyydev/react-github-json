@@ -3,7 +3,7 @@
 - Read (GET), add & delete (POST) data from remote json api.
 - React app created using ```npx create-react-app```.
 
-# Live example
+# Live examples
 - Vercel: https://react-github-json.vercel.app/
 - Netlify: https://react-github-json.netlify.app/
 > Serve live from this github repo
